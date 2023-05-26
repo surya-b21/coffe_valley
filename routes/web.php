@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\DistributorController;
+use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,3 +18,12 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Auth::routes();
+
+Route::get('/home', [HomeController::class, 'index'])->name('home');
+
+Route::get('/catalogue', [HomeController::class, 'catalogue'])->name('catalogue');
+
+Route::get('/distributor', [DistributorController::class, 'index'])->name('distributor.index');
+Route::post('/distributor/store', [DistributorController::class, 'store'])->name('distributor.store');
